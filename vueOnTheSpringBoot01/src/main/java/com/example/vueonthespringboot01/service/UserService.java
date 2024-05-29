@@ -9,6 +9,7 @@ public interface UserService {
     public ResultDTO findById(UserDTO userDTO);
     public ResultDTO delete(int no);
     public ResultDTO save(UserDTO userDTO);
+    public ResultDTO editById(UserDTO userDTO);
 
 
 }

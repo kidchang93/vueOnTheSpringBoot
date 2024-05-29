@@ -20,7 +20,7 @@ public class UserDaoImpl implements UserDao{
 
     @Override
     public int editById(UserDTO userDTO) {
-        return 0;
+        return userMapper.editById(userDTO);
     }
 
     @Override

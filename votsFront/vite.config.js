@@ -18,14 +18,14 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
-  /*server:{
+  server:{
     port: 8800,
-    proxy:{
+    /*proxy:{
       "/api":{
         target: 'http://localhost:8080',
         changeOrigin: true
       }
-    }
-  }*/
+    }*/
+  }
 
 })

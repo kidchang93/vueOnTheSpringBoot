@@ -10,13 +10,14 @@
 
 <script>
 import axios from 'axios'
+const uForm = {no:'1', name:'홍길동', email:'gildong@naver.com', pwd:'1234', gender:"true"}
 
 export default {
   name: 'HomeView',
   methods:{
     getData(){
       axios
-        .post('http://localhost:8080/findAll')
+        .post('http://localhost:8080/editById',uForm)
         .then((response) => {
           console.log(response)
         })

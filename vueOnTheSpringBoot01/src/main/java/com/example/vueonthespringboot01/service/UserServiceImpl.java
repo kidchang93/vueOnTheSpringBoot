@@ -30,6 +30,27 @@ public class UserServiceImpl implements UserService{
 
     }
 
+
+    @Override
+    public ResultDTO editById(UserDTO userDTO) {
+
+        resultDTO = new ResultDTO();
+
+        int state = userDao.editById(userDTO);
+
+        if (state == 1){
+            resultDTO.setState(true);
+            resultDTO.setMessage("사용자 수정이 성공 하였습니다.");
+        } else {
+            resultDTO.setState(false);
+            resultDTO.setMessage("사용자 수정이 실패 하였습니다.");
+        }
+
+
+        return resultDTO;
+    }
+
+
     @Override
     public ResultDTO findById(UserDTO userDTO) {
         return resultDTO;
@@ -44,4 +65,6 @@ public class UserServiceImpl implements UserService{
     public ResultDTO save(UserDTO userDTO) {
         return resultDTO;
     }
+
+
 }

@@ -1,8 +1,8 @@
 package com.example.vueonthespringboot01.controller;
 
 import com.example.vueonthespringboot01.dto.ResultDTO;
+import com.example.vueonthespringboot01.dto.UserDTO;
 import com.example.vueonthespringboot01.service.UserService;
-import com.example.vueonthespringboot01.service.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,8 +33,8 @@ public class DataController {
     }
 
     @PostMapping("/editById")
-    public ResultDTO editById(){
-        return null;
+    public ResultDTO editById(@RequestBody UserDTO userDTO){
+        return userService.editById(userDTO);
     }
 
     @DeleteMapping("/delete")
