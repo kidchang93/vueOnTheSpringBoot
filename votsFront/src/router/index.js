@@ -14,7 +14,7 @@ const router = createRouter({
       name: 'ListView',
       component: () => import('../views/ListView.vue')
     },{
-      path: '/user/findById',
+      path: '/user/findById/',
       name: 'SelectView',
       component: () => import('../views/SelectView.vue')
     },{

@@ -32,6 +32,7 @@
 </template>
 <script>
 import axios from 'axios'
+import store from '@/store/index.js'
 
 export default {
   name: 'ListView',
@@ -42,6 +43,7 @@ export default {
     }
   },
   created() {
+    console.log(store)
     this.getData()
   },
   methods:{
@@ -57,7 +59,11 @@ export default {
         })
     },
     href(row){
-      console.log(row)
+
+      // query -> 쿼리스트링에 키값으로 담아 보내진다.
+      // params -> 쿼리스트링에 보내지지만 value 값만 보여진다.
+      // index.js -> path : '/user/findById/:name/:id'
+      this.$store.commit('setUser',row)
       this.$router.push({name: 'SelectView'})
     }
   }
