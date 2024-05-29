@@ -10,14 +10,18 @@
 
 <script>
 import axios from 'axios'
-const uForm = {no:'1', name:'홍길동', email:'gildong@naver.com', pwd:'1234', gender:"true"}
-
+const uForm = {no:1, name:'홍길동', email:'gildong@naver.com', pwd:'1234', gender:"true"}
+const params = {
+  params : {no: 1}
+}
 export default {
   name: 'HomeView',
   methods:{
+
+    // CRUD 구문
     getData(){
       axios
-        .post('http://localhost:8080/editById',uForm)
+        .delete('http://localhost:8080/delete',params)
         .then((response) => {
           console.log(response)
         })
@@ -25,6 +29,7 @@ export default {
           console.log(error)
         })
     }
+
   }
 }
 </script>

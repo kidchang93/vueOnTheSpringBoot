@@ -38,12 +38,12 @@ public class DataController {
     }
 
     @DeleteMapping("/delete")
-    public ResultDTO delete(){
-        return null;
+    public ResultDTO delete(@RequestParam int no){
+        return userService.delete(no);
     }
 
     @PutMapping("/save")
-    public ResultDTO save(){
-        return null;
+    public ResultDTO save(@RequestBody UserDTO userDTO){
+        return userService.save(userDTO);
     }
 }

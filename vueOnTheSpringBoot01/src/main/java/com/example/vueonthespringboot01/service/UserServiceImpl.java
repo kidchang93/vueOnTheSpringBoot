@@ -58,11 +58,32 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public ResultDTO delete(int no) {
+
+        resultDTO = new ResultDTO();
+        int state = userDao.delete(no);
+        if (state == 1){
+          resultDTO.setState(true);
+          resultDTO.setMessage("사용자 삭제가 성공하였습니다.");
+        } else {
+            resultDTO.setState(false);
+            resultDTO.setMessage("사용자 삭제가 실패하였습니다.");
+        }
+
         return resultDTO;
     }
 
     @Override
     public ResultDTO save(UserDTO userDTO) {
+        resultDTO = new ResultDTO();
+        int state = userDao.save(userDTO);
+        if (state == 1){
+            resultDTO.setState(true);
+            resultDTO.setMessage("사용자 생성이 성공하였습니다.");
+        } else {
+            resultDTO.setState(false);
+            resultDTO.setMessage("사용자 생성이 실패하였습니다.");
+        }
+
         return resultDTO;
     }
 
