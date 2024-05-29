@@ -79,6 +79,7 @@ public class UserServiceImpl implements UserService{
         if (state == 1){
             resultDTO.setState(true);
             resultDTO.setMessage("사용자 생성이 성공하였습니다.");
+            resultDTO.setResult(userDTO);
         } else {
             resultDTO.setState(false);
             resultDTO.setMessage("사용자 생성이 실패하였습니다.");
