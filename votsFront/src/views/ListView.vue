@@ -1,8 +1,4 @@
-<script>
-export default {
-  name: 'ListView'
-}
-</script>
+
 
 <template>
 <div class="container mt-3">
@@ -19,16 +15,12 @@ export default {
     </tr>
     </thead>
     <tbody>
-    <tr class="cursor-pointer" onclick="location.href = '/user/findById'">
-      <td>스티브</td>
-      <td>jobs@shellfoder.com</td>
-      <td>2023-02-28</td>
+    <tr class="cursor-pointer" v-for="row in result" v-bind:key="row.no" v-on:click="href(row)">
+      <td>{{row.name}}</td>
+      <td>{{row.email}}</td>
+      <td>{{row.regDate}}</td>
     </tr>
-    <tr class="cursor-pointer" onclick="location.href = '/user/findById'">
-      <td>에이브릴</td>
-      <td>lavigne@shellfoder.com</td>
-      <td>2023-02-27</td>
-    </tr>
+
 <!--<tr class="cursor-pointer" v-for="row in result" v-bind:key="row.no" v-on:click="href(row)">
       <td>{{ row.name }}</td>
       <td>{{ row.email }}</td>
@@ -38,7 +30,41 @@ export default {
   </table>
 </div>
 </template>
+<script>
+import axios from 'axios'
 
+export default {
+  name: 'ListView',
+  data(){
+    return{
+      result: [
+      ]
+    }
+  },
+  created() {
+    this.getData()
+  },
+  methods:{
+    getData(){
+      axios
+        .post('http://localhost:8080/findAll')
+        .then((response) => {
+          console.log(response)
+          this.result = response.data.result
+        })
+        .catch(error =>{
+          console.log(error)
+        })
+    },
+    href(row){
+      console.log(row)
+      this.$router.push({name: 'SelectView'})
+    }
+  }
+}
+
+
+</script>
 <style scoped>
 
 </style>
