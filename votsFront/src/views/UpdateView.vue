@@ -1,8 +1,4 @@
-<script>
-export default {
-  name: 'UpdateView'
-}
-</script>
+
 
 <template>
   <div class="container mt-3">
@@ -45,7 +41,42 @@ export default {
     </div>
   </div>
 </template>
+<script>
+import axios from 'axios'
 
+export default {
+  name: 'UpdateView',
+  data(){
+    return{
+      result:{}
+    }
+  },
+  created(){
+    this.result = this.$store.state.user
+  },
+  methods:{
+    save(){
+      axios
+        .post('http://localhost:8080/editById', this.result)
+        .then((response) => {
+          console.log(response)
+          if (response.data.state){
+            this.$store.commit('setUser',this.result)
+            this.cancel()
+          } else {
+            alert(response.data.message)
+          }
+        })
+        .catch(error =>{console.log(error)})
+    },
+    cancel(){
+      this.$router.push({name: 'SelectView'})
+    }
+  }
+
+
+}
+</script>
 <style scoped>
 
 </style>

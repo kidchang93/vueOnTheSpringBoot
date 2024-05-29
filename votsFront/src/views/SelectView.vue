@@ -92,6 +92,8 @@
   </div>
 </template>
 <script>
+import axios from 'axios'
+
 export default {
   name: 'SelectView',
   data(){
@@ -106,12 +108,24 @@ export default {
   },
   methods:{
     edit(){
+      this.$router.push({ name: 'UpdateView'})
 
     },
     del(){
-
+      const params = {params: {no: this.result.no}}
+      axios
+        .delete('http://localhost:8080/delete',params)
+        .then((response) => {
+          if (response.data.state) {
+            this.cancel()
+          } else {
+            alert(response.data.message);
+          }
+        })
+        .catch((error) => console.log(error))
     },
     cancel(){
+      this.$store.commit('setUser',{})
       this.$router.push({name: 'ListView'})
     }
 
