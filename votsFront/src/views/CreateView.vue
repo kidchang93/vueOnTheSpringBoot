@@ -85,6 +85,7 @@ export default {
         .then((response) => {
           console.log("데이터 : ",response)
           this.$store.commit('setUser', response.data.result)
+          sessionStorage.setItem('setUser',JSON.stringify(response.data.result))
           this.$router.push({ name : 'SelectView' })
         })
         .catch(error => console.log(error))

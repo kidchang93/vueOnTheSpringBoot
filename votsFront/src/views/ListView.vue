@@ -64,8 +64,12 @@ export default {
       // params -> 쿼리스트링에 보내지지만 value 값만 보여진다.
       // index.js -> path : '/user/findById/:name/:id'
       this.$store.commit('setUser',row)
+      sessionStorage.setItem('setUser', this.result(row))
       this.$router.push({name: 'SelectView'})
-    }
+    },
+    /*base64(user){
+      return window.btoa(encodeURIComponent(JSON.stringify(user)))
+    }*/
   }
 }
 

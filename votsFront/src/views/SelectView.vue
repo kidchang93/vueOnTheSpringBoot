@@ -56,8 +56,9 @@ export default {
     }
   },
   created(){
+    const user = sessionStorage.getItem('setUser')
     this.result = this.$store.state.user;
-    console.log(this.$store.state.user);
+    console.log(JSON.parse(user));
 
   },
   methods:{
@@ -80,6 +81,7 @@ export default {
     },
     cancel(){
       this.$store.commit('setUser',{})
+      sessionStorage.removeItem('setUser')
       this.$router.push({name: 'ListView'})
     }
 
