@@ -21,7 +21,7 @@ export default {
     // CRUD 구문
     getData(){
       axios
-        .delete('http://localhost:8080/delete',params)
+        .put('http://localhost:8080/save',uForm)
         .then((response) => {
           console.log(response)
         })
